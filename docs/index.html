@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>blog</title>
+<title>Exploring Vancouver Tree Heights: A Geographic Data Science Approach – blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -173,7 +173,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-left">
-      <h1 class="title">blog</h1>
+      <h1 class="title">Exploring Vancouver Tree Heights: A Geographic Data Science Approach</h1>
                       </div>
   </div>
     
@@ -199,10 +199,57 @@ window.Quarto = {
 
 
 
-<p>Zheng was here</p>
+<section id="exploring-vancouver-tree-heights-a-geographic-data-science-approach" class="level1">
+<h1>Exploring Vancouver Tree Heights: A Geographic Data Science Approach</h1>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>As we know urban trees provide essential ecological, aesthetic, and health benefits, such as improving air quality, providing shade, and enhancing urban environments. In Vancouver, a city renowned for its greenery, understanding distribution and characteristics of tree heights and considering planning street trees a vital component of its sustainability efforts. However, the characteristics of these trees, such as their heights, can vary significantly across neighborhoods due to factors like local urban planning, soil quality, and maintenance practices. This project aims to explore the relationship between tree height distribution and neighborhoods in Vancouver to support equitable urban forestry management.</p>
+</section>
+<section id="objectives" class="level2">
+<h2 class="anchored" data-anchor-id="objectives">Objectives</h2>
+<p>Urban trees are not just decorations, they are important to us because they improve the air quality, reduce heat, and ecological system. Our goal is to evenly distribute the tree distribution across all neighborhoods to ensure we maximize the environmental benefits for everyone in Vancouver.The first objectives of the project is to analyzing the general distribution of tree heights across Vancouver. Second , to identify patterns and correlations between tree height and geographic factors. Third, to provide insights that assist urban planners and environmentalists in decision-making.</p>
+</section>
+<section id="data-sources-and-preprocessing" class="level2">
+<h2 class="anchored" data-anchor-id="data-sources-and-preprocessing">Data Sources and Preprocessing</h2>
+<p>The dataset used for this analysis includes information that needs to be explored the relationship between tree height distribution and neighborhoods in Vancouver using data from the City of Vancouver Open Data Portal (2022).</p>
+<p>Here’s an overview of the preprocessing steps:</p>
+<ol type="1">
+<li><p>Data Cleaning: In our analysis, we are primarily interested in the NEIGHBOURHOOD_NAME, HEIGHT_RANGE, and HEIGHT_RANGE_ID columns in the street trees dataset, so it is crucial to ensure that there are no missing values in these columns to maintain the accuracy and reliability of our statistical results. Upon checking, we confirmed that none of these three columns contain any missing data.</p></li>
+<li><p>Data Duplicates: Additionally, we examined the entire dataset for duplicate records using the unique identifier TREE_ID and confirmed that there are no duplicate rows. This step ensures that no records are inadvertently counted multiple times.</p></li>
+</ol>
+</section>
+<section id="method" class="level2">
+<h2 class="anchored" data-anchor-id="method">Method</h2>
+<p>The analysis leveraged explotory data visualization (EDA) and statistical tools. Imagine looking at a map of Vancouver with dots representing trees and the size of the dot representing the tree height. You can easily spot which neighborhood has highest trees and shortest trees, etc.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="docs/1.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 1: Heatmap of Tree Height Distribution by Neighbourhood</figcaption>
+</figure>
+</div>
+<p>Although there are some visually identifiable patterns, we can only determine whether there are statistically significant differences in tree heights per neighbourhood using an appropriate test.</p>
+<p>Choosing a Test and Significance Level Because we are dealing with two categorical variables, each with multiple levels, a Chi-squared test of Independence/Homogeneity is appropriate (Soetewey (2020)).</p>
+<p>Our hypotheses are: Null Hypothesis (H0): The tree height is independent from different neighborhoods (no association). Alternative Hypothesis (HA): There is a statistically significant association between neighborhood and tree height.</p>
+<p>The Chi-squared test makes the following assumptions:</p>
+<ol type="1">
+<li>The observations are independent.</li>
+<li>The expected counts are large enough (greater than 5 is typical).</li>
+</ol>
+<p>First, the height measurement of a particular tree does not depend on that of another, so we can assume independence. Second, almost every intersection of the contingency table has counts much larger than 5, with many in the hundreds or thousands.</p>
+<p>Because neither of the test’s two key assumptions appear to be violated, it is safe to proceed with a Chi-squared test of independence.</p>
+<p>Finally, we will choose the standard significance level of 0.05 as our threshold for determining statistical significance.</p>
+<p>Our Chi-squared test of independence yielded a statistically significant result, with a test statistic of 1.55 * 10^4 and a p-value of 0, which is less than our predefined significance level of 0.05.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>After conducting the analysis, we conclude that tree heights vary significantly across neighborhoods. Across neighborhoods, the most common tree height range appears to be between 1 and 3 units (height range ID referring to the specific tree height), indicating that the urban tree population is predominantly composed of younger or medium-sized trees. Taller trees (height range 6-10 units) are scarce or entirely absent in most neighborhoods, which may reflect the challenges posed by urban constraints such as limited space, infrastructure interference, or deliberate pruning practices to control growth.</p>
+<p>Tree management patterns vary greatly across neighborhoods. Urban areas like DOWNTOWN and FAIRVIEW exhibit consistently light colors across the height ranges, suggesting limited green spaces for tree planting. Surprisingly, even non-urban neighborhoods such as DUNBAR-SOUTHLANDS and ARBUTUS RIDGE show lighter colors, indicating potential land availability that could be utilized for planting new trees. This points to opportunities for the government or community organizations to prioritize these areas for greening initiatives.</p>
+<p>Our findings can help the city officials to better plan planting trees and manage the environment quality in Vancouver. For example, neighborhood with fewer and shorter trees needs more attention to improve the vegetation coverage area or soil quality. This can help the city resident benefit equally from the environment and air quality from trees. By recognizing the importance of understanding the tree patterns, we can together build a greener and healthier Vancouver.</p>
 
 
 
+</section>
+</section>
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
